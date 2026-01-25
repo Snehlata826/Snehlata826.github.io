@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Snehlata Kumari - Data Scientist & ML Engineer Portfolio">
+    <meta name="keywords" content="Data Science, Machine Learning, AI, Portfolio, NLP, Computer Vision">
+    <meta name="author" content="Snehlata Kumari">
+    <title>Snehlata Kumari | Data Scientist & ML Engineer</title>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">&lt;SK/&gt;</div>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Canvas for particle animation -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i data-lucide="sparkles"></i>
+                Open to Internships & Research Roles
+            </div>
+            
+            <h1 class="hero-title">Snehlata Kumari</h1>
+            
+            <div class="hero-tags">
+                <span class="tag">Data Scientist</span>
+                <span class="tag-separator">•</span>
+                <span class="tag">ML Engineer</span>
+            </div>
+
+            <div class="typing-container">
+                <p class="typed-text" id="typedText"></p>
+                <span class="cursor" id="cursor">|</span>
+            </div>
+
+            <p class="hero-description">
+                From analyzing <span class="highlight-cyan">5,000+ conversational logs</span> to achieving
+                <span class="highlight-purple">98% accuracy on satellite imagery</span>
+                —I focus on impact, not just models.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i data-lucide="rocket"></i>
+                    Explore My Work
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i data-lucide="mail"></i>
+                    Let's Connect
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/Snehlata826" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/snehlata-kumari-b68285299" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="mailto:kumarisnehlata2005@gmail.com" class="social-icon" aria-label="Email">
+                    <i data-lucide="mail"></i>
+                </a>
+            </div>
+
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <i data-lucide="award" class="achievement-icon text-yellow"></i>
+                    <p>Runner-Up, URVICON 2026 ECOHACK</p>
+                </div>
+                <div class="achievement-card">
+                    <i data-lucide="sparkles" class="achievement-icon text-purple"></i>
+                    <p>GSSoC 2025 Contributor</p>
+                </div>
+                <div class="achievement-card">
+                    <i data-lucide="users" class="achievement-icon text-cyan"></i>
+                    <p>Silicon Achievers Club Member</p>
+                </div>
+                <div class="achievement-card">
+                    <i data-lucide="terminal" class="achievement-icon text-green"></i>
+                    <p>500+ DSA Problems Solved</p>
+                </div>
+            </div>
+
+            <div class="coding-profiles">
+                <a href="https://www.geeksforgeeks.org/profile/kumarisneh1ryw?tab=activity" target="_blank" class="profile-badge badge-green">
+                    <i data-lucide="code"></i>
+                    GeeksforGeeks
+                    <i data-lucide="external-link"></i>
+                </a>
+                <a href="https://leetcode.com/u/23bced40/" target="_blank" class="profile-badge badge-orange">
+                    <i data-lucide="terminal"></i>
+                    LeetCode
+                    <i data-lucide="external-link"></i>
+                </a>
+            </div>
+        </div>
+
+        <a href="#about" class="scroll-indicator">
+            <i data-lucide="chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="stats-banner">
+        <div class="stats-container">
+            <div class="stat-item">
+                <i data-lucide="zap" class="stat-icon"></i>
+                <div class="stat-value">98%</div>
+                <div class="stat-label">ViT Satellite Accuracy</div>
+            </div>
+            <div class="stat-item">
+                <i data-lucide="trending-up" class="stat-icon"></i>
+                <div class="stat-value">25%</div>
+                <div class="stat-label">AI Defect Reduction</div>
+            </div>
+            <div class="stat-item">
+                <i data-lucide="code" class="stat-icon"></i>
+                <div class="stat-value">500+</div>
+                <div class="stat-label">Problems Solved</div>
+            </div>
+            <div class="stat-item">
+                <i data-lucide="database" class="stat-icon"></i>
+                <div class="stat-value">10K+</div>
+                <div class="stat-label">Records Analyzed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="about-intro">
+                <p>
+                    I'm a data science enthusiast currently pursuing Computer Science at Silicon University with a 9.28 CGPA. What drives me isn't just building models—it's the curiosity to ask better questions and uncover patterns that create real impact.
+
+
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card card-cyan">
+                    <h3>
+                        <i data-lucide="sparkles"></i>
+                        At Owision
+                    </h3>
+                    <p>
+                        Analyzed 5,000+ conversational logs to identify patterns in intent recognition failures, reducing defects by 25%.
+                    </p>
+                </div>
+                
+                <div class="about-card card-purple">
+                    <h3>
+                        <i data-lucide="brain"></i>
+                        At NIT Bhopal
+                    </h3>
+                    <p>
+                        Developed Vision Transformer for satellite imagery, achieving 98% accuracy through semi-supervised learning approaches.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="about-current">
+                <p class="current-work">
+                    Currently building a <span class="highlight-purple">Legal AI Analyzer</span> to democratize access to legal information—because 
+                    technology should bridge gaps, not create them.
+                </p>
+                
+                <div class="approach-section">
+                    <p class="approach-title">My approach to every dataset:</p>
+                    <div class="approach-grid">
+                        <div class="approach-item">
+                            <span class="arrow text-cyan">→</span>
+                            <span>What's hiding in the noise?</span>
+                        </div>
+                        <div class="approach-item">
+                            <span class="arrow text-purple">→</span>
+                            <span>Which features matter?</span>
+                        </div>
+                        <div class="approach-item">
+                            <span class="arrow text-pink">→</span>
+                            <span>How do we measure real success?</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-tagline">
+                <p>I code in Python. I think in "why."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <!-- Experience 1 -->
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-dot">
+                        <span class="dot-ping"></span>
+                    </div>
+                    <div class="experience-card">
+                        <span class="exp-badge">Internship</span>
+                        <h3 class="exp-role">AI Intern – Conversational AI Testing</h3>
+                        <p class="exp-company">Owision</p>
+                        <div class="exp-meta">
+                            <span>Remote, India</span>
+                            <span>•</span>
+                            <span>Sep 2025 – Dec 2025</span>
+                        </div>
+
+                        <div class="exp-metrics">
+                            <div class="metric">
+                                <div class="metric-value">25%</div>
+                                <div class="metric-label">Defect Reduction</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">5K+</div>
+                                <div class="metric-label">Logs Analyzed</div>
+                            </div>
+                        </div>
+
+                        <ul class="exp-achievements">
+                            <li>Led execution of 50+ conversational test flows, collaborating with QAs and backend teams</li>
+                            <li>Analyzed 5,000+ conversational logs using Python (pandas, NumPy)</li>
+                            <li>Reduced logic-related defects by 25% through systematic testing</li>
+                        </ul>
+
+                        <div class="exp-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">QA Testing</span>
+                            <span class="skill-tag">NLP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-dot">
+                        <span class="dot-ping"></span>
+                    </div>
+                    <div class="experience-card">
+                        <span class="exp-badge">Research</span>
+                        <h3 class="exp-role">AI/ML Research Intern</h3>
+                        <p class="exp-company">NIT Bhopal</p>
+                        <div class="exp-meta">
+                            <span>Bhopal, India</span>
+                            <span>•</span>
+                            <span>Jun 2025 – Jul 2025</span>
+                        </div>
+
+                        <div class="exp-metrics">
+                            <div class="metric">
+                                <div class="metric-value">98%</div>
+                                <div class="metric-label">Labeled Accuracy</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">20%</div>
+                                <div class="metric-label">Performance Gain</div>
+                            </div>
+                        </div>
+
+                        <ul class="exp-achievements">
+                            <li>Designed and trained Vision Transformer (ViT) model for satellite image analysis</li>
+                            <li>Achieved 98% accuracy on labeled data, 78.3% on semi-supervised evaluation</li>
+                            <li>Conducted statistical analysis and regression experiments with hyperparameter tuning</li>
+                        </ul>
+
+                        <div class="exp-skills">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Vision Transformers</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">Statistical Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="education-card">
+                <h3>
+                    <i data-lucide="award"></i>
+                    Education
+                </h3>
+                <div class="education-content">
+                    <div class="education-info">
+                        <p class="education-degree">Bachelor of Technology in Computer Science</p>
+                        <p class="education-school">Silicon University, Bhubaneswar, Odisha</p>
+                    </div>
+                    <div class="education-grade">
+                        <p class="cgpa">CGPA: 9.28</p>
+                        <p class="year">2023 – Present (3rd Year)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon icon-blue">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <h3>Data Investigation</h3>
+                    <p>Statistical analysis on 10,000+ record datasets. Finding the 'so what?' in messy real-world data.</p>
+                    <p class="skill-tools">pandas, NumPy, SQL, Power BI</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon icon-purple">
+                        <i data-lucide="brain"></i>
+                    </div>
+                    <h3>ML Systems</h3>
+                    <p>End-to-end pipelines from preprocessing to deployment. Production-ready APIs with &lt;1s latency.</p>
+                    <p class="skill-tools">PyTorch, TensorFlow, Scikit-learn, FastAPI</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon icon-green">
+                        <i data-lucide="code"></i>
+                    </div>
+                    <h3>NLP & Language AI</h3>
+                    <p>Conversational AI testing, semantic search with RAG, document analysis and text simplification.</p>
+                    <p class="skill-tools">Transformers, FAISS, 5,000+ log analysis</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon icon-orange">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3>Deployment & Cloud</h3>
+                    <p>Cloud infrastructure, REST APIs, real-time systems. Reduced ETL processing by 25%.</p>
+                    <p class="skill-tools">AWS (EC2, S3, IAM), FastAPI, CloudWatch</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Real problems. Real solutions. Real impact.</p>
+            
+            <div class="projects-container" id="projectsContainer">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container container-small">
+            <h2 class="section-title">Let's Build Something</h2>
+            
+            <p class="contact-intro">
+                Seeking <span class="highlight-cyan">Data Science Internships</span> and
+                <span class="highlight-purple">ML Research roles</span> to create meaningful impact through data.
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-card card-cyan">
+                    <h3>
+                        <i data-lucide="sparkles"></i>
+                        What I Bring
+                    </h3>
+                    <ul>
+                        <li><span class="check">✓</span> End-to-end ML pipeline development</li>
+                        <li><span class="check">✓</span> Production deployment (FastAPI, AWS)</li>
+                        <li><span class="check">✓</span> Real-world problem-solving approach</li>
+                        <li><span class="check">✓</span> Strong algorithmic foundation (500+ problems)</li>
+                    </ul>
+                </div>
+
+                <div class="contact-card card-purple">
+                    <h3>
+                        <i data-lucide="rocket"></i>
+                        Seeking Opportunities
+                    </h3>
+                    <ul>
+                        <li><span class="arrow">→</span> Data Science Internships</li>
+                        <li><span class="arrow">→</span> ML Engineering Roles</li>
+                        <li><span class="arrow">→</span> Research Collaborations (NLP, CV)</li>
+                        <li><span class="arrow">→</span> Impact-driven projects</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-cta">
+                <a href="mailto:kumarisnehlata2005@gmail.com" class="btn btn-primary btn-large">
+                    <i data-lucide="mail"></i>
+                    kumarisnehlata2005@gmail.com
+                </a>
+                
+                <p class="response-time">
+                    <span class="badge badge-success">Response time: &lt;24 hours</span>
+                </p>
+            </div>
+
+            <div class="contact-social">
+                <a href="https://github.com/Snehlata826" target="_blank" class="social-btn btn-github">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/snehlata-kumari-b68285299" target="_blank" class="social-btn btn-linkedin">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="mailto:kumarisnehlata2005@gmail.com" class="social-btn btn-email">
+                    <i data-lucide="mail"></i>
+                </a>
+            </div>
+
+            <div class="coding-profiles">
+                <a href="https://www.geeksforgeeks.org/profile/kumarisneh1ryw?tab=activity" target="_blank" class="profile-badge badge-green">
+                    <i data-lucide="code"></i>
+                    GeeksforGeeks
+                    <i data-lucide="external-link"></i>
+                </a>
+                <a href="https://leetcode.com/u/23bced40/" target="_blank" class="profile-badge badge-orange">
+                    <i data-lucide="terminal"></i>
+                    LeetCode
+                    <i data-lucide="external-link"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Built with React • Designed with purpose • Focused on impact</p>
+            <p class="footer-copy">© 2026 Snehlata Kumari • Making data meaningful</p>
+            
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
