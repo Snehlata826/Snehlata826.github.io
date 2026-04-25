@@ -7,6 +7,131 @@
   <title>Snehlata Kumari | Data Scientist</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── HERO PHOTO ── */
+    .hero-photo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .hero-photo-card {
+      position: relative;
+      border-radius: 24px;
+      padding: 4px;
+      background: linear-gradient(
+        135deg,
+        rgba(59,130,246,0.9) 0%,
+        rgba(6,182,212,0.7) 40%,
+        rgba(99,102,241,0.5) 80%,
+        rgba(255,255,255,0.15) 100%
+      );
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 20px 60px rgba(0,0,0,0.45),
+        0 0 80px rgba(59,130,246,0.25);
+      transition: box-shadow .35s ease, transform .35s ease;
+    }
+
+    .hero-photo-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.12),
+        0 28px 72px rgba(0,0,0,0.5),
+        0 0 100px rgba(59,130,246,0.38);
+    }
+
+    .hero-photo-card::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 20px;
+      background: var(--navy);
+      z-index: 0;
+    }
+
+    .hero-photo-img {
+      position: relative;
+      z-index: 1;
+      width: 420px;
+      max-width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 20px;
+      display: block;
+    }
+
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      width: 340px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
+      pointer-events: none;
+      filter: blur(40px);
+      z-index: 0;
+    }
+
+    @media (max-width: 900px) {
+      .hero-photo-img { width: 340px; }
+    }
+    @media (max-width: 640px) {
+      .hero-photo-img { width: 200px; }
+      .hero-photo-wrap::before { display: none; }
+    }
+
+    /* ── CONTACT PROFILE BOXES ── */
+    .contact-profiles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .85rem;
+    }
+    .contact-profile-box {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px;
+      padding: .9rem 1.1rem;
+      transition: background .2s, border-color .2s, transform .18s;
+      color: inherit;
+      text-decoration: none;
+    }
+    .contact-profile-box:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(59,130,246,.5);
+      transform: translateY(-2px);
+    }
+    .cpb-icon {
+      width: 40px; height: 40px;
+      background: rgba(59,130,246,.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; font-weight: 700; color: #93c5fd;
+      flex-shrink: 0;
+    }
+    .cpb-label {
+      font-size: .7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: #94a3b8;
+    }
+    .cpb-handle {
+      font-size: .84rem; color: #fff; font-weight: 500;
+      margin-top: .06rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    @media (max-width: 900px) {
+      .contact-profiles { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -43,17 +168,21 @@
       <div class="hero-content">
         <p class="hero-label">
           <span class="pulse-dot"></span>
-          Open to Opportunities 
+          Open to Opportunities
         </p>
         <h1 class="hero-name">Snehlata Kumari</h1>
-        <h2 class="hero-title" id="heroTitle">Aspiring Data Scientist | ML Engineer | Gen AI developer</h2>
+        <h2 class="hero-title" id="heroTitle">AI/ML Engineer | Data Scientist | Gen AI Developer</h2>
         <p class="hero-summary">
-          Data Scientist specializing in NLP, ML systems, and production AI pipelines. Experienced in building end-to-end solutions — from data preprocessing and feature engineering to model deployment using FastAPI and AWS. Delivered 20%+ performance improvements across real-world datasets.
-        </p>
+          Motivated AI/ML Engineer specializing in GeoSpatial, Deep Learning, NLP, Computer Vision, and Generative AI. Delivering scalable ML pipelines and MLOps solutions — achieved 93.6% model accuracy in satellite imagery classification using Vision Transformers.
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="Snehlata_Kumari_Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
-        </div>
+           <a href="#projects" class="btn btn-primary">View Projects</a>
+           <a href="Snehlata_Kumari_Resume.pdf" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="btn btn-secondary">
+           View Resume
+           </a>
+        </div> 
         <div class="hero-socials">
           <a href="https://github.com/Snehlata826" target="_blank" rel="noopener">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -67,120 +196,112 @@
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
             LeetCode
           </a>
-          <a href="https://mail.google.com/mail/?view=cm&to=kumarisnehlata2005@gmail.com" target="_blank" class="contact-item">
+          <a href="https://www.geeksforgeeks.org/profile/kumarisneh1ryw?tab=activity" target="_blank" rel="noopener noreferrer">
+             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.117 12.895c-.197 0-.353-.067-.471-.203a.593.593 0 0 1-.177-.442c0-.18.06-.328.177-.441.118-.114.274-.171.471-.171h3.765c.576 0 .864.204.864.612v4.033c0 .287-.066.509-.197.668-.131.158-.337.237-.618.237-.25 0-.441-.07-.573-.211-.133-.141-.2-.338-.2-.592v-2.316c-.53.486-1.12.86-1.765 1.121a5.61 5.61 0 0 1-2.118.39c-1.132 0-2.113-.263-2.942-.788a4.912 4.912 0 0 1-1.926-2.146 6.945 6.945 0 0 1-.676-3.05c0-1.133.225-2.15.676-3.05a4.912 4.912 0 0 1 1.926-2.146 5.568 5.568 0 0 1 2.942-.788c.81 0 1.558.14 2.243.42a5.53 5.53 0 0 1 1.838 1.192.51.51 0 0 1 .162.384c0 .147-.052.274-.155.38a.526.526 0 0 1-.39.16.551.551 0 0 1-.367-.145 4.398 4.398 0 0 0-1.486-.967 4.417 4.417 0 0 0-1.845-.371c-.883 0-1.64.204-2.272.612a3.834 3.834 0 0 0-1.5 1.666c-.354.701-.53 1.5-.53 2.397s.176 1.696.53 2.397c.353.701.853 1.256 1.5 1.666.647.41 1.404.614 2.272.614.735 0 1.411-.148 2.029-.442a4.49 4.49 0 0 0 1.559-1.229h-3.323z"/>
+             </svg>
+             GFG
+          </a>
+          <a href="mailto:kumarisnehlata2005@gmail.com" target="_blank" rel="noopener">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Email
           </a>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="stat-card">
-          <span class="stat-num">9.28</span>
-          <span class="stat-label">CGPA / 10</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-num">98%</span>
-          <span class="stat-label">ViT Accuracy</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-num">300+</span>
-          <span class="stat-label">DSA Problems</span>
-        </div>
-        <div class="stat-card accent">
-          <span class="stat-num">20%+</span>
-          <span class="stat-label">Model Gains</span>
+
+      <!-- RIGHT COLUMN: Photo -->
+      <div class="hero-photo-wrap" aria-hidden="true">
+        <div class="hero-photo-card">
+          <img src="ph.jpeg" alt="Snehlata Kumari" class="hero-photo-img" />
         </div>
       </div>
     </div>
   </section>
 
-<!-- ══════════════ SKILLS ══════════════ -->
-<section class="section" id="skills">
+  <!-- ══════════════ SKILLS ══════════════ -->
+  <section class="section" id="skills">
   <div class="container">
     <h2 class="section-title reveal">Technical Skills</h2>
-    <p class="section-sub reveal">
-      Core competencies aligned with Data Science, Machine Learning & Production AI systems
-    </p>
-
+    <p class="section-sub reveal">Specialized in production-grade GenAI, Computer Vision, and MLOps pipelines</p>
+    
     <div class="skills-grid">
-
-      <!-- Programming -->
       <div class="skill-group reveal">
-        <h3 class="skill-group-title">Programming</h3>
+        <h3 class="skill-group-title">Programming & Core</h3>
         <div class="tags">
           <span class="tag">Python</span>
           <span class="tag">SQL</span>
+          <span class="tag">C</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Git / GitHub</span>
+          <span class="tag">REST APIs</span>
         </div>
       </div>
 
-      <!-- Machine Learning -->
       <div class="skill-group reveal">
-        <h3 class="skill-group-title">Machine Learning</h3>
+        <h3 class="skill-group-title">Generative AI & LLMs</h3>
         <div class="tags">
-          <span class="tag">Regression</span>
-          <span class="tag">Classification</span>
-          <span class="tag">Feature Engineering</span>
-          <span class="tag">Model Optimization</span>
-          <span class="tag">Hyperparameter Tuning</span>
-          <span class="tag">Statistical Modeling</span>
+          <span class="tag">LLaMA 3.x / Mistral</span>
+          <span class="tag">GPT-4o / Claude 3.5</span>
+          <span class="tag">RAG Pipelines</span>
+          <span class="tag">LangChain / LlamaIndex</span>
+          <span class="tag">Vector DBs (FAISS)</span>
+          <span class="tag">RAGAS (Evaluation)</span>
         </div>
       </div>
 
-      <!-- Deep Learning -->
       <div class="skill-group reveal">
-        <h3 class="skill-group-title">Deep Learning</h3>
+        <h3 class="skill-group-title">Deep Learning & CV</h3>
         <div class="tags">
-          <span class="tag">PyTorch</span>
-          <span class="tag">TensorFlow</span>
-          <span class="tag">Transformers</span>
+          <span class="tag">PyTorch / TensorFlow</span>
           <span class="tag">Vision Transformers (ViT)</span>
+          <span class="tag">CNN Architectures</span>
+          <span class="tag">Transfer Learning</span>
+          <span class="tag">OpenCV</span>
         </div>
       </div>
 
-      <!-- NLP & Generative AI -->
       <div class="skill-group reveal">
-        <h3 class="skill-group-title">NLP & Generative AI</h3>
+        <h3 class="skill-group-title">MLOps & Infrastructure</h3>
         <div class="tags">
-          <span class="tag">RAG</span>
-          <span class="tag">FAISS</span>
-          <span class="tag">LLaMA</span>
-          <span class="tag">Semantic Search</span>
-          <span class="tag">Text Simplification</span>
-        </div>
-      </div>
-
-      <!-- Data Analysis -->
-      <div class="skill-group reveal">
-        <h3 class="skill-group-title">Data Analysis & Visualization</h3>
-        <div class="tags">
-          <span class="tag">Pandas</span>
-          <span class="tag">NumPy</span>
-          <span class="tag">Matplotlib</span>
-          <span class="tag">Seaborn</span>
-        </div>
-      </div>
-
-      <!-- MLOps -->
-      <div class="skill-group reveal">
-        <h3 class="skill-group-title">MLOps & Deployment</h3>
-        <div class="tags">
-          <span class="tag">FastAPI</span>
           <span class="tag">MLflow</span>
+          <span class="tag">Docker</span>
           <span class="tag">AWS (EC2, S3)</span>
-          <span class="tag">Streamlit</span>
+          <span class="tag">FastAPI / Streamlit</span>
+          <span class="tag">CI/CD Pipelines</span>
         </div>
       </div>
 
+      <div class="skill-group reveal">
+        <h3 class="skill-group-title">Data Science & Analytics</h3>
+        <div class="tags">
+          <span class="tag">Pandas / NumPy</span>
+          <span class="tag">Scikit-learn / XGBoost</span>
+          <span class="tag">Feature Engineering</span>
+          <span class="tag">Statistical Modeling</span>
+          <span class="tag">Matplotlib / Seaborn</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3 class="skill-group-title">Specialized Domains</h3>
+        <div class="tags">
+          <span class="tag">GeoSpatial AI</span>
+          <span class="tag">Explainable AI (XAI)</span>
+          <span class="tag">Legal Tech NLP</span>
+          <span class="tag">Semantic Search</span>
+          <span class="tag">Prompt Engineering</span>
+        </div>
+      </div>
     </div>
   </div>
-</section>
-
+  </section>
   <!-- ══════════════ EXPERIENCE ══════════════ -->
   <section class="section section-alt" id="experience">
     <div class="container">
       <h2 class="section-title reveal">Work Experience</h2>
-      <p class="section-sub reveal">Real-world impact through ML research &amp; full-stack data engineering</p>
+      <p class="section-sub reveal">Real-world impact through ML research &amp; production-grade engineering</p>
       <div class="timeline">
+
         <div class="timeline-item reveal">
           <div class="timeline-marker"></div>
           <div class="timeline-body">
@@ -192,16 +313,23 @@
               <span class="exp-date">Sep 2025 – Dec 2025</span>
             </div>
             <ul class="exp-bullets">
-              <li>Developed data-driven backend features by integrating <strong>Stripe APIs</strong> and engineering date-range filtering pipelines, enhancing financial data analysis accuracy across multi-region reporting workflows.</li>
-              <li>Collaborated with cross-functional Agile teams to optimize API workflows, improving data consistency and expanding monitoring coverage across <strong>3 critical service endpoints</strong>.</li>
-              <li>Engineered end-to-end data flow pipelines that reduced reporting turnaround time by an estimated <strong>35%</strong>, enabling faster financial decision-making cycles.</li>
+              <li> Engineered scalable backend architectures using <strong>FastAPI</strong> and <strong>Stripe APIs</strong>, optimizing financial data pipelines and increasing reporting efficiency by <strong>25%</strong>.</li>
+              <li> Designed and validated <strong>high-throughput REST APIs</strong>, reducing production-level integration errors by <strong>30%</strong> for the Skillioz platform.</li>
+              <li> Orchestrated <strong>automated data validation workflows</strong> and filtering systems, improving system-wide data consistency by <strong>20%</strong>.</li>
+              <li> Containerized backend services using <strong>Docker</strong> to ensure environment parity across development and staging, streamlining the deployment cycle.</li>
+              <li> Collaborated in an <strong>Agile Scrum</strong> environment, contributing to weekly sprints and performing code reviews to maintain high-quality documentation.</li>
             </ul>
             <div class="exp-tags">
-              <span class="tag tag-sm">Python</span><span class="tag tag-sm">Stripe API</span>
-              <span class="tag tag-sm">FastAPI</span><span class="tag tag-sm">SQL</span><span class="tag tag-sm">Agile</span>
+              <span class="tag tag-sm">Python</span>
+              <span class="tag tag-sm">FastAPI</span>
+              <span class="tag tag-sm">Stripe API</span>
+              <span class="tag tag-sm">Docker</span>
+              <span class="tag tag-sm">PostgreSQL</span>
+              <span class="tag tag-sm">Agile</span>
             </div>
           </div>
         </div>
+
         <div class="timeline-item reveal">
           <div class="timeline-marker"></div>
           <div class="timeline-body">
@@ -213,142 +341,120 @@
               <span class="exp-date">Jun 2025 – Jul 2025</span>
             </div>
             <ul class="exp-bullets">
-              <li>Designed and trained a <strong>Vision Transformer (ViT)</strong> model for satellite image classification, independently driving experimentation and achieving <strong>98% accuracy</strong> on labeled data and <strong>78.3%</strong> on semi-supervised evaluation.</li>
-              <li>Conducted statistical analysis and regression-based experiments with hyperparameter tuning, making data-driven decisions that improved model performance by <strong>20% over baselines</strong>.</li>
-              <li>Authored structured experiment documentation that reduced follow-up experiment setup time by <strong>~40%</strong>, enabling reproducible and scalable research workflows.</li>
+              <li> Developed a <strong>Vision Transformer (ViT)</strong> architecture in PyTorch for satellite imagery classification, training on a curated dataset of <strong>10,000+ samples</strong>.</li>
+              <li> Achieved a peak <strong>accuracy of 93.6%</strong> by implementing advanced hyperparameter tuning and custom feature engineering pipelines.</li>
+              <li> Optimized model inference by <strong>20%</strong> through <strong>Semi-Supervised Learning</strong> and statistical refinement of model weights.</li>
+              <li> Performed <strong>exploratory data analysis (EDA)</strong> on multi-spectral satellite bands to identify key spectral features, reducing input dimensionality without loss of precision.</li>
+              <li> Authored comprehensive research documentation detailing the <strong>XAI (Explainable AI)</strong> aspects of the transformer's attention maps to interpret model decision-making.</li>
             </ul>
             <div class="exp-tags">
-              <span class="tag tag-sm">PyTorch</span><span class="tag tag-sm">Vision Transformers</span>
-              <span class="tag tag-sm">Semi-Supervised Learning</span><span class="tag tag-sm">Statistical Analysis</span>
+              <span class="tag tag-sm">PyTorch</span>
+              <span class="tag tag-sm">ViT</span>
+              <span class="tag tag-sm">GeoSpatial AI</span>
+              <span class="tag tag-sm">XAI</span>
+              <span class="tag tag-sm">EDA</span>
+              <span class="tag tag-sm">Feature Engineering</span>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
-
-  <!-- ══════════════ PROJECTS ══════════════ -->
+  <!-- Projects -->
   <section class="section" id="projects">
-    <div class="container">
-      <h2 class="section-title reveal">Featured Projects</h2>
-      <p class="section-sub reveal">End-to-end ML systems — from data pipelines to live AI-powered applications</p>
-      <div class="projects-grid">
+  <div class="container">
+    <h2 class="section-title reveal">Featured Projects</h2>
+    <p class="section-sub reveal">End-to-end ML systems — from automated legal intelligence to scalable MLOps pipelines</p>
+    <div class="projects-grid">
 
-        <!-- P1: Stock MLOps -->
-        <article class="project-card reveal">
-          <div class="project-header">
-            <span class="project-num">01</span>
-            <div style="display:flex; gap:.5rem; align-items:center">
-              <a href="https://github.com/Snehlata826" target="_blank" class="project-link">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-                GitHub
-              </a>
-              <button class="project-link demo-btn" onclick="openVideo('demo-stock.mp4', 'Stock MLOps Pipeline')">
-                <span class="demo-dot"></span>
-                Demo
-              </button>
-            </div>
+      <article class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">01</span>
+          <div class="project-links">
+            <a href="https://github.com/Snehlata826/legal-ai-analyzer" target="_blank" class="project-link" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> GitHub
+            </a>
+            <button class="project-link demo-btn" onclick="openVideo('demo-legal.mp4', 'Legal AI')">
+              <span class="demo-dot"></span> Demo
+            </button>
           </div>
-          <h3 class="project-title">Stock MLOps Pipeline</h3>
-          <p class="project-problem"><span class="label">Problem:</span> Stock prediction models lacked reproducibility and production readiness — making experiment tracking and reliable deployment impossible.</p>
-          <p class="project-approach"><span class="label">Approach:</span> Architected an end-to-end production-ready ML pipeline covering preprocessing, feature engineering, model training, and evaluation. Integrated <strong>MLflow</strong> for experiment tracking, model versioning, and reproducibility.</p>
-          <div class="project-results">
-            <div class="result-badge"><span class="result-num">E2E</span><span class="result-label">Pipeline</span></div>
-            <div class="result-badge"><span class="result-num">MLflow</span><span class="result-label">Versioning</span></div>
-            <div class="result-badge"><span class="result-num">100%</span><span class="result-label">Reproducible</span></div>
-          </div>
-          <div class="exp-tags" style="margin-top:1rem">
-            <span class="tag tag-sm">Python</span>
-            <span class="tag tag-sm">MLflow</span>
-            <span class="tag tag-sm">Scikit-learn</span>
-            <span class="tag tag-sm">Pandas</span>
-            <span class="tag tag-sm">NumPy</span>
-          </div>
-        </article>
+        </div>
+        <h3 class="project-title">LexAnalyze — Legal Intelligence & XAI</h3>
+        <div class="project-content">
+          <p class="project-text"><span class="text-label">Challenge:</span> High-stakes legal jargon hides critical risks from non-experts; "black-box" models lack the auditability required for legal compliance.</p>
+          <p class="project-text"><span class="text-label">Solution:</span> Built an <strong>ML Ensemble (LogReg + RF)</strong> for risk detection with <strong>SHAP</strong> for word-level feature attribution. Leveraged <strong>LLaMA3</strong> for plain-English clause simplification via a grounded RAG pipeline.</p>
+        </div>
+        <div class="project-results">
+          <div class="result-badge"><span class="result-num">89.6%</span><span class="result-label">ACCURACY</span></div>
+          <div class="result-badge"><span class="result-num">SHAP</span><span class="result-label">XAI LAYER</span></div>
+          <div class="result-badge"><span class="result-num">FastAPI</span><span class="result-label">BACKEND</span></div>
+        </div>
+        <div class="exp-tags">
+          <span class="tag tag-sm">Scikit-Learn</span>
+          <span class="tag tag-sm">Groq LLaMA3</span>
+          <span class="tag tag-sm">SHAP</span>
+          <span class="tag tag-sm">Jan–Mar 2025</span>
+        </div>
+      </article>
 
-        <!-- P2: RAG Copilot -->
-        <article class="project-card reveal">
-          <div class="project-header">
-            <span class="project-num">02</span>
-            <div style="display:flex; gap:.5rem; align-items:center">
-              <a href="https://github.com/Snehlata826" target="_blank" class="project-link">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-                GitHub
-              </a>
-              <button class="project-link demo-btn" onclick="openVideo('demo-rag.mp4', 'GenAI RAG Copilot')">
-                <span class="demo-dot"></span>
-                Demo
-              </button>
-            </div>
+      <article class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">02</span>
+          <div class="project-links">
+            <a href="https://github.com/Snehlata826/stock-mlops-system" target="_blank" class="project-link" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> GitHub
+            </a>
           </div>
-          <h3 class="project-title">RAG-Based Scientific Literature Intelligence System</h3>
-          <p class="project-problem"><span class="label">Problem:</span> Large document repositories were unsearchable with keyword methods — causing slow and inaccurate information retrieval for enterprise users.</p>
-          <p class="project-approach"><span class="label">Approach:</span> Designed a Retrieval-Augmented Generation (RAG) system using <strong>LLaMA</strong> and <strong>FAISS</strong> for semantic search over 1,000+ document chunks, deployed via FastAPI for low-latency real-time responses.</p>
-          <div class="project-results">
-            <div class="result-badge"><span class="result-num">1K+</span><span class="result-label">Doc Chunks</span></div>
-            <div class="result-badge"><span class="result-num">Low</span><span class="result-label">Latency</span></div>
-            <div class="result-badge"><span class="result-num">RAG</span><span class="result-label">Architecture</span></div>
-          </div>
-          <div class="exp-tags" style="margin-top:1rem">
-            <span class="tag tag-sm">Python</span>
-            <span class="tag tag-sm">LLaMA</span>
-            <span class="tag tag-sm">FAISS</span>
-            <span class="tag tag-sm">FastAPI</span>
-            <span class="tag tag-sm">RAG</span>
-          </div>
-        </article>
+        </div>
+        <h3 class="project-title">Stock MLOps — Drift-Aware Pipeline</h3>
+        <div class="project-content">
+          <p class="project-text"><span class="text-label">Challenge:</span> Financial models suffer from "silent failure" due to market volatility and temporal data leakage, making static deployments unreliable.</p>
+          <p class="project-text"><span class="text-label">Solution:</span> Engineered a production lifecycle using <strong>MLflow</strong> for registry. Implemented <strong>Walk-Forward Validation</strong> to eliminate leakage and <strong>Evidently AI</strong> for real-time drift detection with automated retraining triggers.</p>
+        </div>
+        <div class="project-results">
+          <div class="result-badge"><span class="result-num">MLflow</span><span class="result-label">REGISTRY</span></div>
+          <div class="result-badge"><span class="result-num">Evidently</span><span class="result-label">DRIFT UI</span></div>
+          <div class="result-badge"><span class="result-num">Docker</span><span class="result-label">COMPOSE</span></div>
+        </div>
+        <div class="exp-tags">
+          <span class="tag tag-sm">XGBoost</span>
+          <span class="tag tag-sm">MLflow</span>
+          <span class="tag tag-sm">Evidently AI</span>
+          <span class="tag tag-sm">Apr–May 2025</span>
+        </div>
+      </article>
 
-        <!-- P3: Legal AI Analyzer -->
-        <article class="project-card project-featured reveal">
-          <div class="project-header">
-            <span class="project-num">03</span>
-            <div style="display:flex; gap:.5rem; align-items:center">
-              <a href="https://github.com/Snehlata826" target="_blank" class="project-link">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-                GitHub
-              </a>
-              <button class="project-link demo-btn" onclick="openVideo('demo-legal.mp4', 'Legal AI Document Analyzer')">
-                <span class="demo-dot"></span>
-                Demo
-              </button>
-            </div>
+      <article class="project-card project-featured reveal">
+        <div class="project-header">
+          <span class="project-num">03</span>
+          <div class="project-links">
+            <a href="https://github.com/Snehlata826/Explainable-RAGAI" target="_blank" class="project-link" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> GitHub
+            </a>
           </div>
-          <h3 class="project-title">Legal Document Intelligence & Risk Detection System</h3>
-          <p class="project-problem"><span class="label">Problem:</span> Legal documents are dense and jargon-heavy — hiding critical risks, obligations, and unfavorable clauses that non-lawyers routinely miss.</p>
-          <p class="project-approach"><span class="label">Approach:</span> Built an AI-powered legal document analyzer using <strong>Claude AI</strong>. Users paste any legal text to receive plain-language Q&amp;A, automatic risk identification with severity ratings, key clause extraction, and obligation summaries.</p>
-          <div class="project-results">
-            <div class="result-badge"><span class="result-num">AI</span><span class="result-label">Powered</span></div>
-            <div class="result-badge"><span class="result-num">Risk</span><span class="result-label">Detection</span></div>
-            <div class="result-badge"><span class="result-num">Q&amp;A</span><span class="result-label">Interface</span></div>
-          </div>
-          <div class="exp-tags" style="margin-top:1rem; margin-bottom:1.25rem">
-            <span class="tag tag-sm">Claude AI</span>
-            <span class="tag tag-sm">NLP</span>
-            <span class="tag tag-sm">FastAPI</span>
-            <span class="tag tag-sm">Python</span>
-            <span class="tag tag-sm">LegalTech</span>
-          </div>
-          
-        </article>
+        </div>
+        <h3 class="project-title">Scientific RAG — GenAI Copilot</h3>
+        <div class="project-content">
+          <p class="project-text"><span class="text-label">Challenge:</span> Generic LLMs hallucinate when querying technical literature. Researchers require verifiable answers with multi-document source traceability.</p>
+          <p class="project-text"><span class="text-label">Solution:</span> Architected a <strong>Hybrid Search (FAISS + BM25)</strong> pipeline with cross-encoder reranking. Integrated <strong>Mistral-7B</strong> for generation with source-linked citations and hallucination risk scoring.</p>
+        </div>
+        <div class="project-results">
+          <div class="result-badge"><span class="result-num">Hybrid</span><span class="result-label">RETRIEVAL</span></div>
+          <div class="result-badge"><span class="result-num">Mistral</span><span class="result-label">7B-INST</span></div>
+          <div class="result-badge"><span class="result-num">XAI</span><span class="result-label">CITATIONS</span></div>
+        </div>
+        <div class="exp-tags">
+          <span class="tag tag-sm">LangChain</span>
+          <span class="tag tag-sm">FAISS</span>
+          <span class="tag tag-sm">Mistral-7B</span>
+          <span class="tag tag-sm">Jan–Feb 2026</span>
+        </div>
+      </article>
 
-      </div>
     </div>
+  </div>
   </section>
-
-
-
   <!-- ══════════ VIDEO DEMO MODAL ══════════ -->
   <div class="modal-overlay" id="videoModal">
     <div class="video-modal">
@@ -374,11 +480,11 @@
         <div class="edu-content">
           <h3 class="edu-degree">Bachelor of Technology — Computer Science &amp; Engineering</h3>
           <p class="edu-uni">Silicon University · Bhubaneswar, Odisha</p>
-          <p class="edu-meta">Sep 2023 – Present &nbsp;(3rd Year) &nbsp;|&nbsp; CGPA: <strong>9.28 / 10.0</strong></p>
+          <p class="edu-meta">Sep 2023 – Present &nbsp;(3rd Year) &nbsp;|&nbsp; CGPA: <strong>9.25 / 10.0</strong></p>
           <div class="edu-details">Relevant Coursework: Machine Learning, Data Structures &amp; Algorithms, Database Management, Statistics &amp; Probability, Deep Learning, Natural Language Processing</div>
         </div>
         <div class="edu-cgpa">
-          <span class="cgpa-num">9.28</span>
+          <span class="cgpa-num">9.25</span>
           <span class="cgpa-label">CGPA / 10</span>
         </div>
       </div>
@@ -386,170 +492,141 @@
   </section>
 
   <!-- ══════════════ ACHIEVEMENTS ══════════════ -->
-<!-- ══════════════ ACHIEVEMENTS ══════════════ -->
-<section class="section section-alt" id="achievements">
-  <div class="container">
-    <h2 class="section-title">Achievements & Leadership</h2>
-    <p class="section-sub">
-      Competitive recognition, academic distinction, and leadership development
-    </p>
+  <section class="section section-alt" id="achievements">
+    <div class="container">
+      <h2 class="section-title">Achievements &amp; Leadership</h2>
+      <p class="section-sub">Competitive recognition, academic distinction, and leadership development</p>
+      <div class="achievements-grid">
 
-    <div class="achievements-grid">
-
-      <!-- Hackathon -->
-      <div class="ach-card">
-        <div>
-          <h4>Runner-Up – URVICON 2026 ECOHACK</h4>
-          <p>
-            Recognized for developing an AI-driven sustainability solution under competitive hackathon conditions, demonstrating applied problem-solving and rapid prototyping skills.
-          </p>
+        <div class="ach-card">
+          <div>
+            <h4>Runner-Up – ECOHACK Hackathon 2026</h4>
+            <p>Secured <strong>2nd rank</strong> in ECOHACK organized by the Ecosocial Club of Silicon University — recognized for an AI-driven sustainability solution demonstrating rapid prototyping skills.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Aspire -->
-      <div class="ach-card">
-        <div>
-          <h4>Selected Participant – Aspire Leadership Program</h4>
-          <p>
-            Chosen for a fully funded global leadership development program (Aspire Institute, founded at Harvard University), focused on ethical leadership, community impact, and professional growth.
-          </p>
+        <div class="ach-card">
+          <div>
+            <h4>Selected Participant – Aspire Leadership Program</h4>
+            <p>Chosen for a fully funded global leadership development program (Aspire Institute, founded at Harvard University), focused on ethical leadership, community impact, and professional growth.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Herbalife -->
-      <div class="ach-card">
-        <div>
-          <h4>Herbalife Scholar 2025 (Merit-Based Scholarship)</h4>
-          <p>
-            Awarded competitive merit-based scholarship recognizing academic excellence, leadership potential, and sustained academic performance.
-          </p>
+        <div class="ach-card">
+          <div>
+            <h4>Herbalife Scholar 2025 (Merit-Based Scholarship)</h4>
+            <p>Awarded competitive merit-based scholarship recognizing academic excellence, leadership potential, and sustained academic performance.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- SIH -->
-      <div class="ach-card">
-        <div>
-          <h4>Smart India Hackathon – College Level Qualified</h4>
-          <p>
-            Selected at institutional level for national innovation challenge based on technical execution, feasibility, and problem-solving approach.
-          </p>
+        <div class="ach-card">
+          <div>
+            <h4>Smart India Hackathon 2025 – Round 1 Cleared</h4>
+            <p>Cleared Round 1 of Smart India Hackathon 2025, showcasing innovation and collaborative problem-solving at the institutional level.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Club -->
-      <div class="ach-card">
-        <div>
-          <h4>Silicon Achievers Club Member</h4>
-          <p>
-            Member of a merit-based academic excellence community recognizing consistent performance and leadership involvement.
-          </p>
+        <div class="ach-card">
+          <div>
+            <h4>Event Lead – Developer Summit 2.0 &amp; Circus of Clues</h4>
+            <p>Led the organization of <strong>Developer Summit 2.0</strong> and <em>Circus of Clues</em> with <strong>200+ participants</strong>, managing logistics, speaker coordination, and team operations end-to-end.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- DSA -->
-      <div class="ach-card">
-        <div>
-          <h4>300+ DSA Problems Solved</h4>
-          <p>
-            Demonstrated strong algorithmic foundation through consistent competitive programming practice across data structures and advanced problem-solving domains.
-          </p>
+        <div class="ach-card">
+          <div>
+            <h4>500+ DSA Problems Solved</h4>
+            <p>Solved <strong>500+ DSA problems</strong> on LeetCode and GeeksforGeeks, mastering algorithms and data structures across competitive programming domains.</p>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- ══════════════ CONTACT ══════════════ -->
-  <!-- ══════════════ CONTACT ══════════════ -->
-<section class="section contact-section" id="contact">
-  <div class="container contact-grid">
+  <section class="section contact-section" id="contact">
+    <div class="container contact-grid">
 
-    <div class="contact-left">
-      <h2 class="section-title light">Let’s Connect</h2>
-
-      <p class="contact-sub">
-        Currently seeking full-time Data Scientist and Machine Learning roles focused on applied AI, research-driven development, and scalable ML systems. Based in Bhubaneswar, India — open to remote opportunities.
-      </p>
-
-      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-        <a href="mailto:kumarisnehlata2005@gmail.com" class="btn btn-primary">
-          Send an Email
-        </a>
-
-        <!-- Optional: Add phone if comfortable -->
-        <!-- Replace with your real number -->
-        <!--
-        <a href="tel:+91XXXXXXXXXX" class="btn btn-secondary">
-          Call Me
-        </a>
-        -->
+      <div class="contact-left">
+        <h2 class="section-title light">Let's Connect</h2>
+        <p class="contact-sub">
+          Currently seeking full-time Data Scientist and Machine Learning roles focused on applied AI, research-driven development, and scalable ML systems. Based in Bhubaneswar, India — open to remote opportunities.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="mailto:kumarisnehlata2005@gmail.com" class="btn btn-primary">Send an Email</a>
+          <a href="tel:+918260417834" class="btn btn-secondary">+91 82604 17834</a>
+        </div>
+        <p style="margin-top:1rem;font-size:.85rem;color:#94a3b8;">
+          Resume available upon request · Typically respond within 24 hours
+        </p>
       </div>
 
-      <p style="margin-top:1rem; font-size:.85rem; color:#94a3b8;">
-        Resume available upon request · Typically respond within 24 hours
-      </p>
+      <div class="contact-profiles">
+
+        <a href="mailto:kumarisnehlata2005@gmail.com" class="contact-profile-box">
+          <div class="cpb-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <p class="cpb-label">Email</p>
+            <p class="cpb-handle">kumarisnehlata2005@gmail.com</p>
+          </div>
+        </a>
+
+        <a href="tel:+918260417834" class="contact-profile-box">
+          <div class="cpb-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <p class="cpb-label">Phone</p>
+            <p class="cpb-handle">+91 82604 17834</p>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/snehlata-kumari-b68285299/" target="_blank" class="contact-profile-box" rel="noopener">
+          <div class="cpb-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div>
+            <p class="cpb-label">LinkedIn</p>
+            <p class="cpb-handle">Snehlata Kumari</p>
+          </div>
+        </a>
+
+        <a href="https://github.com/Snehlata826" target="_blank" class="contact-profile-box" rel="noopener">
+          <div class="cpb-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </div>
+          <div>
+            <p class="cpb-label">GitHub</p>
+            <p class="cpb-handle">Snehlata826</p>
+          </div>
+        </a>
+
+        <a href="https://leetcode.com/u/23bced40/" target="_blank" class="contact-profile-box" rel="noopener">
+          <div class="cpb-icon" style="font-size:.72rem;font-weight:700;letter-spacing:-.5px">LC</div>
+          <div>
+            <p class="cpb-label">LeetCode</p>
+            <p class="cpb-handle">23bced40</p>
+          </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/profile/kumarisneh1ryw?tab=activity" target="_blank" class="contact-profile-box" rel="noopener">
+          <div class="cpb-icon" style="font-size:.72rem;font-weight:700;letter-spacing:-.5px">GFG</div>
+          <div>
+            <p class="cpb-label">GeeksforGeeks</p>
+            <p class="cpb-handle">kumarisneh1ryw</p>
+          </div>
+        </a>
+
+      </div>
     </div>
+  </section>
 
-
-    <div class="contact-links">
-
-      <!-- Email -->
-      <a href="mailto:kumarisnehlata2005@gmail.com" class="contact-item">
-        <div class="contact-icon">✉</div>
-        <div>
-          <p class="contact-platform">Email</p>
-          <p class="contact-handle">kumarisnehlata2005@gmail.com</p>
-        </div>
-      </a>
-
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/snehlata-kumari-b68285299/" target="_blank" class="contact-item">
-        <div class="contact-icon">in</div>
-        <div>
-          <p class="contact-platform">LinkedIn</p>
-          <p class="contact-handle">Snehlata Kumari</p>
-        </div>
-      </a>
-
-      <!-- GitHub -->
-      <a href="https://github.com/Snehlata826" target="_blank" class="contact-item">
-        <div class="contact-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-        </div>
-        <div>
-          <p class="contact-platform">GitHub</p>
-          <p class="contact-handle">Snehlata826</p>
-        </div>
-      </a>
-
-      <!-- LeetCode -->
-      <a href="https://leetcode.com/u/23bced40/" target="_blank" class="contact-item">
-        <div class="contact-icon" style="font-size:.72rem;font-weight:700;letter-spacing:-.5px">LC</div>
-        <div>
-          <p class="contact-platform">LeetCode</p>
-          <p class="contact-handle">23bced40</p>
-        </div>
-      </a>
-
-      <!-- GeeksforGeeks -->
-      <a href="https://www.geeksforgeeks.org/profile/kumarisneh1ryw?tab=activity" target="_blank" class="contact-item">
-        <div class="contact-icon" style="font-size:.72rem;font-weight:700;letter-spacing:-.5px">GFG</div>
-        <div>
-          <p class="contact-platform">GeeksforGeeks</p>
-          <p class="contact-handle">kumarisneh1ryw</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© 2026 Snehlata Kumari </p>
-
+      <p>© 2026 Snehlata Kumari</p>
     </div>
   </footer>
 
