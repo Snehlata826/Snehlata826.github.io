@@ -36,7 +36,7 @@
 
   /* ─── SCROLL REVEAL ─── */
   document.querySelectorAll(
-    '.skill-group, .timeline-item, .project-card, .edu-card, .ach-card, .contact-item, .stat-card, .section-title, .section-sub'
+    '.skill-group, .timeline-item, .project-card, .proj-row, .edu-card, .ach-card, .contact-item, .stat-card, .section-title, .section-sub, .contact-profile-box'
   ).forEach(el => el.classList.add('reveal'));
 
   const revealObs = new IntersectionObserver((entries) => {
@@ -80,6 +80,190 @@
   });
 
   /* ═══════════════════════════════════════════
+     HOVER GLOW EFFECTS
+     Smooth lift + rising colored glow shadow
+     on all interactive card/tag/button elements
+  ═══════════════════════════════════════════ */
+
+  /* ── Glow color map by element type ── */
+  const glowMap = [
+    /* Project cards (new alternating layout) */
+    {
+      selector: '.proj-row',
+      color: 'rgba(26, 86, 219, 0.18)',
+      lift: -6,
+      scale: 1.005,
+      shadow: '0 8px 16px rgba(0,0,0,.06), 0 20px 48px rgba(26,86,219,.14), 0 2px 4px rgba(0,0,0,.04)'
+    },
+    /* Old project cards (grid layout fallback) */
+    {
+      selector: '.project-card',
+      color: 'rgba(26, 86, 219, 0.16)',
+      lift: -5,
+      scale: 1.005,
+      shadow: '0 8px 16px rgba(0,0,0,.07), 0 18px 44px rgba(26,86,219,.13)'
+    },
+    /* Skill groups */
+    {
+      selector: '.skill-group',
+      color: 'rgba(6, 182, 212, 0.15)',
+      lift: -4,
+      scale: 1.008,
+      shadow: '0 6px 14px rgba(0,0,0,.07), 0 14px 36px rgba(6,182,212,.13)'
+    },
+    /* Timeline / experience cards */
+    {
+      selector: '.timeline-body',
+      color: 'rgba(26, 86, 219, 0.12)',
+      lift: -4,
+      scale: 1.003,
+      shadow: '0 6px 18px rgba(0,0,0,.07), 0 14px 36px rgba(26,86,219,.1)'
+    },
+    /* Achievement cards */
+    {
+      selector: '.ach-card',
+      color: 'rgba(16, 185, 129, 0.14)',
+      lift: -4,
+      scale: 1.008,
+      shadow: '0 6px 16px rgba(0,0,0,.07), 0 14px 32px rgba(16,185,129,.12)'
+    },
+    /* Education card */
+    {
+      selector: '.edu-card',
+      color: 'rgba(26, 86, 219, 0.14)',
+      lift: -5,
+      scale: 1.003,
+      shadow: '0 8px 24px rgba(0,0,0,.08), 0 20px 48px rgba(26,86,219,.12)'
+    },
+    /* Contact profile boxes */
+    {
+      selector: '.contact-profile-box',
+      color: 'rgba(59, 130, 246, 0.22)',
+      lift: -3,
+      scale: 1.012,
+      shadow: '0 4px 12px rgba(0,0,0,.12), 0 10px 28px rgba(59,130,246,.2)'
+    },
+    /* Nav links */
+    {
+      selector: '.nav-links a',
+      color: 'rgba(26, 86, 219, 0.08)',
+      lift: -1,
+      scale: 1.0,
+      shadow: 'none'
+    },
+    /* Stat cards (hero) */
+    {
+      selector: '.stat-card',
+      color: 'rgba(59, 130, 246, 0.2)',
+      lift: -3,
+      scale: 1.01,
+      shadow: '0 4px 14px rgba(0,0,0,.1), 0 10px 28px rgba(59,130,246,.18)'
+    },
+  ];
+
+  /* ── Apply lift+glow via JS for smooth per-element control ── */
+  glowMap.forEach(({ selector, lift, scale, shadow }) => {
+    document.querySelectorAll(selector).forEach(el => {
+      /* Store original so we can restore it cleanly */
+      const origTransition = el.style.transition || '';
+      const origTransform  = el.style.transform  || '';
+      const origShadow     = el.style.boxShadow   || '';
+
+      el.style.transition = [
+        'transform .28s cubic-bezier(.25,.8,.25,1)',
+        'box-shadow .28s cubic-bezier(.25,.8,.25,1)',
+        'border-color .28s ease',
+        origTransition
+      ].filter(Boolean).join(', ');
+
+      el.addEventListener('mouseenter', () => {
+        el.style.transform = `translateY(${lift}px) scale(${scale})`;
+        if (shadow !== 'none') el.style.boxShadow = shadow;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = origTransform;
+        el.style.boxShadow = origShadow;
+      });
+    });
+  });
+
+  /* ── Tag / badge hover: pop + blue glow ── */
+  document.querySelectorAll('.tag, .proj-tech-chip, .result-badge').forEach(el => {
+    el.style.transition = 'transform .2s cubic-bezier(.25,.8,.25,1), box-shadow .2s ease, background .2s ease';
+    el.style.cursor = 'default';
+
+    el.addEventListener('mouseenter', () => {
+      el.style.transform  = 'translateY(-2px) scale(1.06)';
+      el.style.boxShadow  = '0 4px 12px rgba(26,86,219,.2)';
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+      el.style.boxShadow = '';
+    });
+  });
+
+  /* ── Button hover: lift + colored glow ── */
+  document.querySelectorAll(
+    '.btn, .proj-btn, .project-link, .nav-cta, .quick-btn'
+  ).forEach(el => {
+    el.style.transition = [
+      el.style.transition,
+      'transform .2s cubic-bezier(.25,.8,.25,1)',
+      'box-shadow .2s ease'
+    ].filter(Boolean).join(', ');
+
+    el.addEventListener('mouseenter', () => {
+      el.style.transform = 'translateY(-2px)';
+
+      /* Pick glow color by button class */
+      if (el.classList.contains('btn-primary') || el.classList.contains('proj-btn-demo') || el.classList.contains('nav-cta')) {
+        el.style.boxShadow = '0 6px 20px rgba(26,86,219,.38)';
+      } else if (el.classList.contains('proj-btn-live')) {
+        el.style.boxShadow = '0 6px 20px rgba(16,185,129,.38)';
+      } else if (el.classList.contains('demo-btn')) {
+        el.style.boxShadow = '0 6px 20px rgba(16,185,129,.3)';
+      } else if (el.classList.contains('live-link')) {
+        el.style.boxShadow = '0 6px 20px rgba(16,185,129,.3)';
+      } else {
+        el.style.boxShadow = '0 4px 14px rgba(0,0,0,.15)';
+      }
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+      el.style.boxShadow = '';
+    });
+  });
+
+  /* ── Social links in hero: glow on hover ── */
+  document.querySelectorAll('.hero-socials a').forEach(el => {
+    el.style.transition = 'color .2s ease, transform .2s ease, text-shadow .2s ease';
+    el.addEventListener('mouseenter', () => {
+      el.style.transform  = 'translateY(-2px)';
+      el.style.textShadow = '0 0 12px rgba(147,197,253,.6)';
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform  = '';
+      el.style.textShadow = '';
+    });
+  });
+
+  /* ── Browser frame inside proj-row: extra lift ── */
+  document.querySelectorAll('.browser-frame').forEach(el => {
+    const card = el.closest('.proj-row');
+    if (!card) return;
+    card.addEventListener('mouseenter', () => {
+      el.style.transition = 'transform .35s cubic-bezier(.25,.8,.25,1), box-shadow .35s ease';
+      el.style.transform  = 'scale(1.018) translateY(-3px)';
+      el.style.boxShadow  = '0 20px 60px rgba(0,0,0,.22), 0 4px 8px rgba(0,0,0,.1)';
+    });
+    card.addEventListener('mouseleave', () => {
+      el.style.transform  = '';
+      el.style.boxShadow  = '';
+    });
+  });
+
+  /* ═══════════════════════════════════════════
      LEGAL AI MODAL
   ═══════════════════════════════════════════ */
   const openLegalBtn = document.getElementById('openLegalDemo');
@@ -98,11 +282,7 @@
       document.body.style.overflow = 'hidden';
     });
   }
-
-  if (closeLegalBtn) {
-    closeLegalBtn.addEventListener('click', closeLegalModal);
-  }
-
+  if (closeLegalBtn) closeLegalBtn.addEventListener('click', closeLegalModal);
   if (legalModal) {
     legalModal.addEventListener('click', e => {
       if (e.target === legalModal) closeLegalModal();
@@ -114,7 +294,6 @@
     document.body.style.overflow = '';
   }
 
-  /* Quick prompt buttons */
   document.querySelectorAll('.quick-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       legalQ.value = btn.dataset.q;
@@ -122,7 +301,6 @@
     });
   });
 
-  /* Copy result */
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(outputArea.innerText).then(() => {
@@ -132,10 +310,7 @@
     });
   }
 
-  /* Analyze button */
-  if (analyzeBtn) {
-    analyzeBtn.addEventListener('click', analyzeDocument);
-  }
+  if (analyzeBtn) analyzeBtn.addEventListener('click', analyzeDocument);
 
   async function analyzeDocument() {
     const docText  = legalText.value.trim();
@@ -149,7 +324,6 @@
       return;
     }
 
-    /* Show loading */
     outputHdr.style.display = 'none';
     outputArea.innerHTML = '<div class="loading-state"><div class="spinner"></div><p class="loading-text">Analyzing with AI…</p><p class="loading-text" style="font-size:.8rem;color:#94a3b8">Identifying risks, clauses &amp; obligations</p></div>';
     analyzeBtn.disabled = true;
@@ -212,9 +386,9 @@ Use plain language, avoid jargon, always recommend consulting a real attorney fo
     let html = text
       .replace(/^### (.+)$/gm, '<h3>$1</h3>')
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\[HIGH RISK\]/g, '<span class="risk-badge high">🔴 HIGH</span>')
+      .replace(/\[HIGH RISK\]/g,   '<span class="risk-badge high">🔴 HIGH</span>')
       .replace(/\[MEDIUM RISK\]/g, '<span class="risk-badge medium">🟡 MEDIUM</span>')
-      .replace(/\[LOW RISK\]/g,  '<span class="risk-badge low">🟢 LOW</span>')
+      .replace(/\[LOW RISK\]/g,    '<span class="risk-badge low">🟢 LOW</span>')
       .replace(/^[-•*] (.+)$/gm, '<li>$1</li>')
       .replace(/(<li>.*<\/li>\n?)+/gs, m => '<ul>' + m + '</ul>');
 
@@ -238,33 +412,24 @@ Use plain language, avoid jargon, always recommend consulting a real attorney fo
   const videoTitleEl  = document.getElementById('videoTitle');
   const closeVideoBtn = document.getElementById('closeVideoModal');
 
-  /* This must be on window so onclick="" in HTML can find it */
-  window.openVideo = function(src, title) {
+  window.openVideo = function (src, title) {
     demoSource.src = src;
     videoTitleEl.textContent = title + ' — Live Demo';
     videoModal.classList.add('open');
     document.body.style.overflow = 'hidden';
     demoVideo.load();
-    demoVideo.play().catch(function() {
-      /* Autoplay blocked — user can press play manually */
-    });
+    demoVideo.play().catch(function () {});
   };
 
-  if (closeVideoBtn) {
-    closeVideoBtn.addEventListener('click', closeVideoModal);
-  }
-
+  if (closeVideoBtn) closeVideoBtn.addEventListener('click', closeVideoModal);
   if (videoModal) {
-    videoModal.addEventListener('click', function(e) {
+    videoModal.addEventListener('click', function (e) {
       if (e.target === videoModal) closeVideoModal();
     });
   }
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      closeVideoModal();
-      closeLegalModal();
-    }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeVideoModal(); closeLegalModal(); }
   });
 
   function closeVideoModal() {
