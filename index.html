@@ -585,7 +585,73 @@
     </div>
   </div>
 
-  <div id="cursor-aura"></div>
+  <!-- ══════════════ AI CHAT WIDGET ══════════════ -->
+  <div class="ai-chat-widget" id="aiChatWidget">
+
+    <!-- Floating trigger button -->
+    <button class="ai-chat-fab" id="aiChatFab" aria-label="Ask Snehlata's AI assistant">
+      <span class="ai-fab-icon ai-fab-open">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </span>
+      <span class="ai-fab-icon ai-fab-close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </span>
+      <span class="ai-fab-badge">AI</span>
+    </button>
+
+    <!-- Chat panel -->
+    <div class="ai-chat-panel" id="aiChatPanel" aria-hidden="true">
+      <div class="ai-chat-header">
+        <div class="ai-chat-header-left">
+          <div class="ai-avatar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div>
+            <p class="ai-chat-name">Snehlata's AI</p>
+            <p class="ai-chat-status"><span class="ai-online-dot"></span>Ready to answer</p>
+          </div>
+        </div>
+        <button class="ai-chat-minimize" id="aiChatMinimize" aria-label="Close chat">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+      </div>
+
+      <div class="ai-chat-messages" id="aiChatMessages">
+        <!-- Welcome message -->
+        <div class="ai-msg ai-msg-bot">
+          <div class="ai-msg-bubble">
+            👋 Hi! I'm Snehlata's AI assistant. Ask me anything about her skills, projects, experience, or whether she'd be a good fit for your team!
+          </div>
+        </div>
+        <!-- Suggested questions -->
+        <div class="ai-suggestions" id="aiSuggestions">
+          <button class="ai-suggestion-chip" data-q="What ML projects has she built?">🚀 Her best projects</button>
+          <button class="ai-suggestion-chip" data-q="What are her core technical skills?">🧠 Core skills</button>
+          <button class="ai-suggestion-chip" data-q="Is she open to remote work?">📍 Work preferences</button>
+          <button class="ai-suggestion-chip" data-q="What makes her stand out as an AI engineer?">⭐ What makes her unique</button>
+        </div>
+      </div>
+
+      <div class="ai-chat-input-row">
+        <input
+          type="text"
+          class="ai-chat-input"
+          id="aiChatInput"
+          placeholder="Ask about skills, projects, experience…"
+          autocomplete="off"
+          maxlength="300"
+        />
+        <button class="ai-chat-send" id="aiChatSend" aria-label="Send">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+      <p class="ai-chat-footer">Powered by Claude · Answers reflect Snehlata's actual resume</p>
+    </div>
+  </div>
+
+  <canvas id="ribbonCanvas"></canvas>
   <script src="script.js"></script>
 </body>
 </html>
