@@ -200,4 +200,70 @@
     p.innerHTML = p.innerHTML.replace(/© \d{4}/, '© ' + new Date().getFullYear());
   });
 
+  /* ─── CURSOR AURA ─── */
+  const aura = document.getElementById('cursor-aura');
+  if (aura && window.matchMedia('(pointer: fine)').matches) {
+    // Dark mode: vivid but lighter; Light mode: softer tones for multiply blend
+    const darkColors = [
+      'rgba(59,130,246,0.55)',    // blue
+      'rgba(6,182,212,0.52)',     // cyan / accent
+      'rgba(99,102,241,0.50)',    // indigo
+    ];
+    const lightColors = [
+      'rgba(59,130,246,0.45)',    // blue
+      'rgba(6,182,212,0.40)',     // cyan
+      'rgba(99,102,241,0.42)',    // indigo
+    ];
+
+    function getColors() {
+      return html.getAttribute('data-theme') === 'light' ? lightColors : darkColors;
+    }
+
+    let colorIdx = 0;
+    let colorTimer = null;
+    let ax = window.innerWidth / 2, ay = window.innerHeight / 2;
+    let cx = ax, cy = ay;
+
+    // Smoothly lerp the aura toward cursor
+    function animateAura() {
+      cx += (ax - cx) * 0.1;
+      cy += (ay - cy) * 0.1;
+      aura.style.left = cx + 'px';
+      aura.style.top  = cy + 'px';
+      requestAnimationFrame(animateAura);
+    }
+    animateAura();
+
+    function applyColor() {
+      aura.style.background = getColors()[colorIdx];
+    }
+    applyColor();
+
+    // Cycle colour every 2.2 s
+    function cycleColor() {
+      colorIdx = (colorIdx + 1) % darkColors.length;
+      applyColor();
+      colorTimer = setTimeout(cycleColor, 2200);
+    }
+    colorTimer = setTimeout(cycleColor, 2200);
+
+    // Re-apply color when theme switches
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => setTimeout(applyColor, 50));
+    }
+
+    // Track cursor
+    document.addEventListener('mousemove', e => {
+      ax = e.clientX;
+      ay = e.clientY;
+    }, { passive: true });
+
+    // Hide when cursor leaves window
+    document.addEventListener('mouseleave', () => { aura.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => {
+      const isLight = html.getAttribute('data-theme') === 'light';
+      aura.style.opacity = isLight ? '0.28' : '0.38';
+    });
+  }
+
 })();
