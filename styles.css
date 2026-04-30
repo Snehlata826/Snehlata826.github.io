@@ -622,7 +622,7 @@ button { font-family: var(--font-body); }
 .contact-sub { color: #94a3b8; margin-bottom: 2rem; font-size: .97rem; line-height: 1.75; }
 
 .contact-profiles { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
-.contact-profile-box { display: flex; align-items: center; gap: .85rem; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: .9rem 1.1rem; transition: background .2s, border-color .2s, transform .18s; color: inherit; text-decoration: none; }
+.contact-profile-box { display: flex; align-items: center; gap: .85rem; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: .9rem 1.1rem; transition: background .2s, border-color .2s, transform .18s; color: inherit; text-decoration: none; cursor: pointer; }
 .contact-profile-box:hover { background: rgba(255,255,255,.1); border-color: rgba(59,130,246,.5); transform: translateY(-2px); }
 .cpb-icon { width: 40px; height: 40px; background: rgba(59,130,246,.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: .78rem; font-weight: 700; color: #93c5fd; flex-shrink: 0; }
 .cpb-label { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #94a3b8; }
