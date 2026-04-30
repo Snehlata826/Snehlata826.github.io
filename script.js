@@ -266,4 +266,223 @@
     });
   }
 
+  /* ═══════════════════════════════════════════
+     AI CHATBOT WIDGET
+  ═══════════════════════════════════════════ */
+  (function initChatbot() {
+    const widget   = document.getElementById('aiChatWidget');
+    const fab      = document.getElementById('aiChatFab');
+    const minimize = document.getElementById('aiChatMinimize');
+    const messages = document.getElementById('aiChatMessages');
+    const input    = document.getElementById('aiChatInput');
+    const sendBtn  = document.getElementById('aiChatSend');
+    const suggestions = document.getElementById('aiSuggestions');
+    if (!widget || !fab) return;
+
+    /* ── Toggle open / closed ── */
+    function openChat() {
+      widget.classList.add('open');
+      fab.setAttribute('aria-label', 'Close chat');
+      setTimeout(() => input && input.focus(), 320);
+    }
+    function closeChat() {
+      widget.classList.remove('open');
+      fab.setAttribute('aria-label', 'Open chat');
+    }
+
+    fab.addEventListener('click', () => {
+      widget.classList.contains('open') ? closeChat() : openChat();
+    });
+    if (minimize) minimize.addEventListener('click', closeChat);
+
+    /* ── Knowledge base ── */
+    const KB = {
+      projects: `🚀 **Snehlata's Featured Projects:**
+
+**1. LexAnalyze — Legal Intelligence & XAI** *(Live)*
+   • ML Ensemble (LogReg + RF) → 89.6% accuracy
+   • SHAP word-level attribution for risk flags
+   • LLaMA 3 via Groq for clause simplification (RAG)
+   • Stack: Scikit-Learn, FastAPI, SHAP | Jan–Mar 2025
+
+**2. Stock MLOps — Drift-Aware Pipeline** *(Live)*
+   • MLflow experiment registry + Walk-Forward Validation
+   • Evidently AI real-time drift dashboard
+   • Automated retraining triggers
+   • Stack: XGBoost, MLflow, Docker | Apr–May 2025
+
+**3. Scientific RAG — GenAI Copilot** *(Research Preview)*
+   • Hybrid Search: FAISS + BM25 with cross-encoder reranking
+   • Mistral-7B generation with citation tracing
+   • Hallucination risk scoring via RAGAS
+   • Stack: LangChain, FAISS, Mistral-7B | Jan–Feb 2026`,
+
+      experience: `💼 **Work Experience:**
+
+**Software Developer Intern @ Owision** *(Sep–Dec 2025)*
+   • Built scalable FastAPI backends + Stripe APIs
+   • Increased reporting efficiency by 25%
+   • Reduced production integration errors by 30%
+   • Containerized services with Docker
+
+**AI/ML Research Intern @ NIT Bhopal** *(Jun–Jul 2025)*
+   • Vision Transformer (ViT) for satellite imagery
+   • Trained on 10,000+ samples → 93.6% accuracy
+   • Optimized inference by 20% via Semi-Supervised Learning
+   • Authored XAI documentation with attention map visualizations`,
+
+      skills: `🧠 **Technical Skills:**
+
+**Programming & Core:** Python, SQL, C, MongoDB, Git, REST APIs
+
+**Generative AI & LLMs:** LLaMA 3.x, Mistral, GPT-4o, Claude 3.5, RAG Pipelines, LangChain, LlamaIndex, FAISS, RAGAS
+
+**Deep Learning & CV:** PyTorch, TensorFlow, Vision Transformers (ViT), CNNs, Transfer Learning, OpenCV
+
+**MLOps & Infrastructure:** MLflow, Docker, AWS (EC2, S3), FastAPI, Streamlit, CI/CD Pipelines
+
+**Data Science:** Pandas, NumPy, Scikit-learn, XGBoost, Feature Engineering, Matplotlib, Seaborn
+
+**Domains:** GeoSpatial AI, Explainable AI (XAI), Legal Tech NLP, Semantic Search, Prompt Engineering`,
+
+      achievements: `🏆 **Achievements & Leadership:**
+
+🥈 **Runner-Up – ECOHACK Hackathon 2026** (120+ teams)
+🎓 **Aspire Leadership Program** (Harvard-founded, fully funded)
+💡 **Herbalife Scholar 2025** – Merit-based scholarship (top 5% cohort)
+🇮🇳 **Smart India Hackathon 2025** – Round 1 Cleared
+📋 **Event Lead** – Developer Summit 2.0 & Circus of Clues (200+ participants)
+💻 **500+ DSA Problems** solved on LeetCode & GeeksforGeeks`,
+
+      education: `🎓 **Education:**
+
+**B.Tech — Computer Science & Engineering**
+   Silicon University · Bhubaneswar, Odisha
+   Sep 2023 – Present (3rd Year)
+   CGPA: **9.25 / 10.0** 🌟
+
+Relevant Coursework: Machine Learning, Data Structures & Algorithms, Database Management, Statistics & Probability, Deep Learning, Natural Language Processing`,
+
+      contact: `📬 **Contact & Profiles:**
+
+📧 Email: kumarisnehlata2005@gmail.com
+💼 LinkedIn: linkedin.com/in/snehlata-kumari-b68285299
+🐙 GitHub: github.com/Snehlata826
+💻 LeetCode: leetcode.com/u/23bced40
+🟢 GeeksforGeeks: geeksforgeeks.org/profile/kumarisneh1ryw
+
+📍 Based in Bhubaneswar, India
+🗓️ Available from **July 2026** for full-time roles (open to remote)`,
+
+      availability: `🗓️ Snehlata is **available from July 2026** for full-time roles as a Data Scientist or ML Engineer. She's based in Bhubaneswar, India and open to remote opportunities worldwide. Feel free to reach out at kumarisnehlata2005@gmail.com!`,
+
+      about: `👩‍💻 **About Snehlata Kumari:**
+
+She's a 3rd-year B.Tech CSE student at Silicon University with a CGPA of 9.25/10, specializing in Generative AI, Computer Vision, and MLOps.
+
+Key highlights:
+• Built a 93.6%-accurate satellite imagery classifier using Vision Transformers at NIT Bhopal
+• Interned as Software Developer at Owision, building production FastAPI backends
+• Runner-Up at ECOHACK Hackathon 2026
+• Selected for the Aspire Leadership Program (Harvard-founded)
+• 500+ DSA problems solved
+
+She turns research into deployable, production-grade ML systems! 🚀`,
+
+      fallback: `I can tell you about Snehlata's **projects**, **experience**, **skills**, **education**, **achievements**, and **contact info**. What would you like to know? You can also ask things like:
+   • "What's her best project?"
+   • "Where can I find her resume?"
+   • "Is she available for hire?"`,
+    };
+
+    /* ── Match user query to KB ── */
+    function getResponse(q) {
+      const lq = q.toLowerCase();
+      if (/proj|lexanalyz|stock|mlops|rag|scientific|legal|legal ai/i.test(lq)) return KB.projects;
+      if (/skill|tech|stack|language|tool|pytorch|python|llm|genai|ml|ai|framework/i.test(lq)) return KB.skills;
+      if (/exp|intern|work|job|owision|nit|bhopal|role|career/i.test(lq)) return KB.experience;
+      if (/achiev|award|hack|ecohack|aspire|herbalife|sia|sih|dsa|leetcode|gfg/i.test(lq)) return KB.achievements;
+      if (/edu|study|college|universit|silicon|cgpa|grade|course/i.test(lq)) return KB.education;
+      if (/contact|email|linkedin|github|reach|hire|message|dm|social/i.test(lq)) return KB.contact;
+      if (/availab|when|start|hire|open|full.?time|remote|relocat/i.test(lq)) return KB.availability;
+      if (/who|about|yourself|introduc|tell me about her|overview/i.test(lq)) return KB.about;
+      if (/resum|cv|download/i.test(lq)) return '📄 You can download Snehlata\'s resume directly from the portfolio! Click the **"Download Resume"** button in the hero section or contact section. It\'s also linked at: snehlata826.github.io';
+      if (/hello|hi|hey|greet|good morning|good afternoon|good evening/i.test(lq)) return '👋 Hello! Great to meet you! I\'m here to help you learn all about Snehlata Kumari — AI/ML Engineer, hackathon winner, and all-round tech powerhouse. What would you like to know?';
+      if (/thank|thanks|appreciate|awesome|great|cool|nice/i.test(lq)) return '😊 You\'re welcome! Feel free to ask anything else about Snehlata. I\'m always here to help!';
+      return KB.fallback;
+    }
+
+    /* ── Append message ── */
+    function appendMessage(text, role) {
+      const div = document.createElement('div');
+      div.className = `ai-msg ai-msg-${role}`;
+      const bubble = document.createElement('div');
+      bubble.className = 'ai-msg-bubble';
+      bubble.textContent = text;
+      div.appendChild(bubble);
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+      return bubble;
+    }
+
+    /* ── Typing indicator ── */
+    function showTyping() {
+      const div = document.createElement('div');
+      div.className = 'ai-msg ai-msg-bot';
+      div.id = 'aiTypingIndicator';
+      div.innerHTML = '<div class="ai-msg-bubble"><div class="ai-typing-dots"><span></span><span></span><span></span></div></div>';
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+    function hideTyping() {
+      const el = document.getElementById('aiTypingIndicator');
+      if (el) el.remove();
+    }
+
+    /* ── Send message flow ── */
+    function sendMessage(text) {
+      const q = (text || (input && input.value) || '').trim();
+      if (!q) return;
+      if (input) input.value = '';
+      if (sendBtn) sendBtn.disabled = true;
+
+      // Hide suggestion chips after first interaction
+      if (suggestions) suggestions.style.display = 'none';
+
+      appendMessage(q, 'user');
+      showTyping();
+
+      const delay = 700 + Math.random() * 800;
+      setTimeout(() => {
+        hideTyping();
+        const response = getResponse(q);
+        appendMessage(response, 'bot');
+        if (sendBtn) sendBtn.disabled = false;
+        if (input) input.focus();
+      }, delay);
+    }
+
+    /* ── Wire up inputs ── */
+    if (sendBtn) sendBtn.addEventListener('click', () => sendMessage());
+    if (input) {
+      input.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+      });
+    }
+
+    /* ── Suggestion chips ── */
+    const chipMap = {
+      'chip-projects':     '🚀 Tell me about her projects',
+      'chip-experience':   '💼 What is her work experience?',
+      'chip-skills':       '🧠 What are her technical skills?',
+      'chip-achievements': '🏆 What are her achievements?',
+      'chip-contact':      '📬 How can I contact her?',
+    };
+    Object.entries(chipMap).forEach(([id, question]) => {
+      const chip = document.getElementById(id);
+      if (chip) chip.addEventListener('click', () => sendMessage(question));
+    });
+
+  })();
+
 })();
