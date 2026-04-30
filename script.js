@@ -412,13 +412,50 @@ She turns research into deployable, production-grade ML systems! 🚀`,
       return KB.fallback;
     }
 
+    /* ── Render markdown-style text as HTML ── */
+    function renderMarkdown(text) {
+      // Convert **bold** to <strong>
+      let html = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      // Convert *italic* to <em>
+      html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      // Convert lines starting with • or - to list items
+      const lines = html.split('\n');
+      let result = '';
+      let inList = false;
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const isBullet = /^[\s]*[•\-]\s/.test(line);
+        if (isBullet) {
+          if (!inList) { result += '<ul class="ai-list">'; inList = true; }
+          result += '<li>' + line.replace(/^[\s]*[•\-]\s/, '') + '</li>';
+        } else {
+          if (inList) { result += '</ul>'; inList = false; }
+          if (line.trim() === '') {
+            result += '<br>';
+          } else if (/^\d+\.\s/.test(line)) {
+            result += '<p class="ai-num-item">' + line + '</p>';
+          } else if (line.trim().startsWith('🚀') || line.trim().startsWith('💼') || line.trim().startsWith('🧠') || line.trim().startsWith('🏆') || line.trim().startsWith('🎓') || line.trim().startsWith('📬') || line.trim().startsWith('👩') || line.trim().startsWith('👋') || line.trim().startsWith('😊') || line.trim().startsWith('📄') || line.trim().startsWith('🗓️')) {
+            result += '<p class="ai-header-line">' + line + '</p>';
+          } else {
+            result += '<p>' + line + '</p>';
+          }
+        }
+      }
+      if (inList) result += '</ul>';
+      return result;
+    }
+
     /* ── Append message ── */
     function appendMessage(text, role) {
       const div = document.createElement('div');
       div.className = `ai-msg ai-msg-${role}`;
       const bubble = document.createElement('div');
       bubble.className = 'ai-msg-bubble';
-      bubble.textContent = text;
+      if (role === 'bot') {
+        bubble.innerHTML = renderMarkdown(text);
+      } else {
+        bubble.textContent = text;
+      }
       div.appendChild(bubble);
       messages.appendChild(div);
       messages.scrollTop = messages.scrollHeight;
